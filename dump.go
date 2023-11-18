@@ -119,10 +119,14 @@ func walk(b *strings.Builder, v reflect.Value, prefix string, depth int, stack [
 	}
 }
 
-func Dump(x any) {
+func String(x any) string {
 	b := new(strings.Builder)
 
 	walk(b, reflect.ValueOf(x), "", 0, []reflect.Value{})
 
-	fmt.Print(b.String())
+	return b.String()
+}
+
+func Dump(x any) {
+	fmt.Print(String(x))
 }
